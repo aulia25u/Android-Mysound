@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnSound = findViewById<Button>(R.id.btn_soundpool)
+        val btnSound1 = findViewById<Button>(R.id.btn_soundpool1)
 
         sp = SoundPool.Builder()
                 .setMaxStreams(10)
@@ -40,6 +41,14 @@ class MainActivity : AppCompatActivity() {
         soundId = sp.load(this, R.raw.clinking_glasses, 1) // in 2nd param u have to pass your desire ringtone
 
         btnSound.setOnClickListener {
+            if (spLoaded) {
+                sp.play(soundId, 1f, 1f, 0, 0, 1f)
+            }
+        }
+
+        soundId = sp.load(this, R.raw.clicking, 1) // in 2nd param u have to pass your desire ringtone
+
+        btnSound1.setOnClickListener {
             if (spLoaded) {
                 sp.play(soundId, 1f, 1f, 0, 0, 1f)
             }
